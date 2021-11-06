@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<style>
+    .login-form {
+        width: 450px;
+        padding: 40px 30px;
+        background: #eee;
+        
+        border-radius: 4px;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+       
+       
+        transform: translateY(-50%);
+    }
+</style>
+<div class="login-form">
+    <div class="row align-content-center text-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body my-3">
+                    <h2 class="card-title font-weight-bold">Iniciar sesion</h2>
+                    <hr />
+                    <form action="/Usuario/Login" method="post">
+                        <div class="my-3 mx-3">
+                            <label>Usuario</label>
+                            <input type="text" class="form-control" name="NombreUsuario" value="" />
+                        </div>
+                        <span class="text-danger">@Html.ValidationMessage("Login")</span>
+                        <div class="my-3 mx-3">
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" name="Password" value="" />
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-primary">Iniciar sesion</button>
+                        </div>
+                        <div>
+                            <a href="/home/index" class="btn btn-secondary my-3">Atrás</a>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

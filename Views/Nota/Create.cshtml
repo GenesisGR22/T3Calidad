@@ -1,0 +1,99 @@
+﻿@{ Layout = null;
+    var nota = (Nota)Model;}
+
+
+
+<form id="createNota" onsubmit="guardar(event)" action="#" enctype="multipart/form-data" method="post">
+
+    <div class="form-group">
+        <label><strong>Titulo</strong></label>
+        <input type="text" class="form-control" name="Titulo" placeholder="Titulo" value="@Model.Titulo" />
+        <strong style="color: #ff0000">@Html.ValidationMessage("titulo")</strong>
+    </div>
+
+
+    <div class="form-group">
+        <label><strong>Contenido</strong></label>
+    </div>
+    <textarea id="text" class="form-control" rows="5" cols="60" name="Contenido"></textarea>
+    <br />
+    <strong style="color: #ff0000"> @Html.ValidationMessage("contenido")</strong>
+
+
+    <div class="form-group">
+        <label><strong>Etiquetas</strong></label>
+        @foreach (var item in ViewBag.Etiquetas)
+        {
+            <div class="form-check form-check">
+                <input name="etiqueta" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="@item.Id">
+                <label class="form-check-label" for="inlineCheckbox1">@item.Nombre</label>
+            </div>}
+        <strong style="color: #ff0000">@Html.ValidationMessage("etiqueta")</strong>
+    </div>
+</form>
+<script type='text/javascript'>
+
+
+    var simplemde = new SimpleMDE({
+        autofocus: true,
+        
+        blockStyles: {
+            bold: "__",
+            italic: "_"
+        },
+        element: document.getElementById("text"),
+        forceSync: true,
+        hideIcons: ["guide", "heading"],
+        indentWithTabs: false,
+       
+        insertTexts: {
+            horizontalRule: ["", "\n\n-----\n\n"],
+            image: ["![](http://", ")"],
+            link: ["[", "](http://)"],
+            table: ["", "\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text      | Text     |\n\n"],
+        },
+        lineWrapping: false,
+        parsingConfig: {
+            allowAtxHeaderWithoutSpace: true,
+            strikethrough: false,
+            underscoresBreakWords: true,
+        },
+        placeholder: "Contenido de tu nota...",
+        previewRender: function (plainText) {
+            return customMarkdownParser(plainText); 
+        },
+        previewRender: function (plainText, preview) {
+            setTimeout(function () {
+                preview.innerHTML = customMarkdownParser(plainText);
+            }, 250);
+
+            return "Loading...";
+        },
+        promptURLs: true,
+        renderingConfig: {
+            singleLineBreaks: false,
+            codeSyntaxHighlighting: true,
+        },
+        shortcuts: {
+            drawTable: "Cmd-Alt-T"
+        },
+        showIcons: ["code", "table"],
+        spellChecker: false,
+        status: false,
+        status: ["autosave", "lines", "words", "cursor"], 
+        status: ["autosave", "lines", "words", "cursor", {
+            className: "keystrokes",
+            defaultValue: function (el) {
+                this.keystrokes = 0;
+                el.innerHTML = "0 Keystrokes";
+            },
+            onUpdate: function (el) {
+                el.innerHTML = ++this.keystrokes + " Keystrokes";
+            }
+        }], 
+        styleSelectedText: false,
+        tabSize: 4,
+        toolbar: ["bold", "italic", "heading", "|", "quote"],
+        toolbarTips: false,
+    });
+</script>

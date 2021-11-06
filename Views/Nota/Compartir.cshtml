@@ -1,0 +1,24 @@
+﻿
+
+<div class="card" style=" background: #000000">
+    <h3 class="card-header text-center" style="color: #ffffff">NOTAS COMPARTIDAS DE AMIGOS</h3>
+    <div class="card-body" style=" background: #000000">
+        <br />
+        @foreach (var item in ViewBag.notaCompartida)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body my-3">
+
+                            <h6 align="center">@item.Notas.Titulo  Compartido de: @item.Usuarios.Nombre</h6> <hr />
+                            <span>@item.Notas.Contenido </span><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+        }
+    </div>
+</div>

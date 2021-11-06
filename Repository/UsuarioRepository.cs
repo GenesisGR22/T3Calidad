@@ -21,7 +21,7 @@ namespace T3Calidad_N00024035.Repository
         private readonly IN00024035Context _context;
         private readonly IConfiguration configuration;
         public IHostEnvironment hostEnv;
-        public UsuarioRepository(IN00024035Context _context, IConfiguration configuration, IHostEnvironment hostEnv)
+        public UsuarioRepository(N00024035Context _context, IConfiguration configuration, IHostEnvironment hostEnv)
         {
             this._context = _context;
             this.configuration = configuration;

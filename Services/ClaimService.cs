@@ -12,7 +12,7 @@ namespace T3Calidad_N00024035.Services
         Usuario LoggedUser();
         void SetHttpContext(HttpContext httpContext);
     }
-    public class ClaimService
+    public class ClaimService: IClaimService
     {
         private IN00024035Context context;
         private HttpContext httpContext;
