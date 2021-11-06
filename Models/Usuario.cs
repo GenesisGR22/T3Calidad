@@ -19,6 +19,6 @@ namespace T3Calidad_N00024035.Models
         [MinLength(6)]
         public string Password { get; set; }
         public List<Nota> Notas { get; set; }
-        public List<Compartir> Compartirs { get; set; }
+     
     }
 }

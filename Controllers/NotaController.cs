@@ -156,36 +156,7 @@ namespace T3Calidad_N00024035.Controllers
 
             return View("Lista");
         }
-        [HttpGet]
-        public IActionResult Compartir()
-        {
-            claim.SetHttpContext(HttpContext);
-            ViewBag.notaCompartida = context.GetCompartir(claim.LoggedUser().Id);
-            return View("Compartir");
-        }
-        [HttpPost]
-        public IActionResult Compartir(int idNota, int idUsuario, int idAmigo)
-        {
-            claim.SetHttpContext(HttpContext);
-            var VerificaNota = context.GetCompartir0(idNota, idUsuario, idAmigo);
-            if (VerificaNota != null)
-            {
-                ModelState.AddModelError("Nota", "esta nota ya se compartio");
-            }
-            if (ModelState.IsValid)
-            {
-                var compartir = new Compartir
-                {
-                    IdNota = idNota,
-                    IdAmigo = idAmigo,
-                    IdUsuario = idUsuario
-                };
-                context.saveCompartir(compartir);
-            }
-            ViewBag.Etiquetas = context.GetEtiqueta();
-            ViewBag.NameUser = claim.LoggedUser().Nombre;
-            return View("Index");
-        }
-
+        
+       
     }
 }

@@ -10,9 +10,6 @@ namespace T3Calidad_N00024035.Repository
     public interface INotaRepository
     {
         List<Usuario> GetUsuarios();
-        List<Compartir> GetCompartir(int id);
-        Compartir GetCompartir0(int idNota, int idUsuario, int idAmigo);
-        List<Compartir> GetCompartir2();
         List<Etiqueta> GetEtiqueta();
         List<DetalleEtiquetaNota> GetDetalleEtiquetaNota();
         List<DetalleEtiquetaNota> GetDetalleEtiquetaNota2();
@@ -22,7 +19,6 @@ namespace T3Calidad_N00024035.Repository
         void saveNota(Nota nota);
         void UpdateNota(Nota nota);
         void saveDetEtiqNota(List<DetalleEtiquetaNota> etic);
-        void saveCompartir(Compartir compartir);
         void DeleteNota(Nota nota, List<DetalleEtiquetaNota> etic);
     }
     public class NotaRepository: INotaRepository
@@ -41,21 +37,9 @@ namespace T3Calidad_N00024035.Repository
             _context.SaveChanges();
         }
 
-        public List<Compartir> GetCompartir(int id)
-        {
-            return _context.Compartirs.Where(a => a.IdAmigo == id).Include(z => z.Notas).Include(z => z.Usuarios).ToList();
-        }
+        
 
-        public Compartir GetCompartir0(int idNota, int idUsuario, int idAmigo)
-        {
-            return _context.Compartirs
-                 .Where(o => o.IdNota == idNota && o.IdUsuario == idUsuario).FirstOrDefault();
-        }
-
-        public List<Compartir> GetCompartir2()
-        {
-            return _context.Compartirs.Include(z => z.Notas).Include(z => z.Usuarios).ToList();
-        }
+      
 
         public List<DetalleEtiquetaNota> GetDetalleEtiquetaNota()
         {
@@ -93,11 +77,7 @@ namespace T3Calidad_N00024035.Repository
             return _context.Usuarios.ToList();
         }
 
-        public void saveCompartir(Compartir compartir)
-        {
-            _context.Compartirs.Add(compartir);
-            _context.SaveChanges();
-        }
+   
 
         public void saveDetEtiqNota(List<DetalleEtiquetaNota> etic)
         {

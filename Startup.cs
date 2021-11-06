@@ -33,15 +33,15 @@ namespace T3Calidad_N00024035
                   o => o.UseSqlServer(Configuration.GetConnectionString("context"))
         
              );
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
-               AddCookie(o => o.LoginPath = "/auth/login");
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
+              // AddCookie(o => o.LoginPath = "/auth/login");
             services.AddTransient<IN00024035Context, N00024035Context>();
             services.AddTransient<INotaRepository, NotaRepository>();
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
             services.AddTransient<IClaimService, ClaimService>();
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(option => { option.LoginPath = "/Usuario/Login"; });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
+               // .AddCookie(option => { option.LoginPath = "/Usuario/Login"; });
 
         }
 
