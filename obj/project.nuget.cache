@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s9KiVTUYYs/+m511O+VUjm0V62At1z02vAOvavs5SHtKQ2aASoEwA9LBOCwbJBTwWyff8v01R5QZM3vE4p5Vjw==",
+  "dgSpecHash": "YkysqwgJv+nxZWH3h2vJFkCvnS79Plu7i3kRGl2vQiK1hc4X/Ahbh1L/GTUaXEcGnWboQng9aDwoZ9Wqlh/YUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Genesis Granados  R\\Desktop\\T3Calidad-N00024035\\T3Calidad-N00024035.csproj",
+  "projectFilePath": "C:\\Users\\Genesis Granados  R\\Desktop\\CalitadT3\\T3Calidad-N00024035\\T3Calidad-N00024035.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Genesis Granados  R\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Genesis Granados  R\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
