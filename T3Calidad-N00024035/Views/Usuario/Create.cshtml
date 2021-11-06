@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 align="center">Registrarse</h1>
+<hr />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body my-3">
+                <form action="/Usuario/Create" method="post">
+
+                    <span>@Html.ValidationMessage("Login")</span>
+
+
+                    <div>
+                        <label>Nombre de Usuario</label>
+                        <input class="form-control" type="text" name="Nombre" />
+                    </div>
+
+                    <div>
+                        <label>Contraseña de Usuario</label>
+                        <input class="form-control" type="password" name="password" value="" />
+                    </div>
+
+                    <div>
+                        <label>Confirmar Contraseña</label>
+                        <input class="form-control" type="password" name="passwordpok" value="" />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 mx-0">
+                            <button class="btn btn-success my-3">Registrarse</button>
+                        </div>
+                        <div>
+                            <a href="/home/index" class="btn btn-secondary my-3">Atrás</a>
+                           
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

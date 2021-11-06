@@ -1,0 +1,126 @@
+﻿<div class="text-center">
+    <h1>Notas de:  @ViewBag.NameUser</h1><hr />
+</div>
+
+<style>
+    .list-group {
+        background: #000000;
+    }
+</style>
+<div class="container">
+    <form class="col-md-8" action="/" enctype="multipart/form-data" method="get">
+        <div class="form-inline">
+            <input id="Nombre" class="form-control mr-sm-2 my-sm-0" type="search" name="search" placeholder="Buscar algo">
+            <button class="btn btn-outline-success my-2" id="buscar" type="submit"> Buscar</button>
+        </div>
+    </form>
+
+    <div class="container">
+        <div class="container">
+            <div class="container">
+                <div class="float-right">
+                    <a href="#" data-toggle="modal" data-target="#crear" class="btn btn-primary">Nueva Nota</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br />
+<br />
+
+<div id="nav" class="float-left">
+
+    <div class="container-fluid" style="margin-left:20px;margin-right:20px">
+        <div class="list-group">
+            <br />
+            <div class="container">
+
+                <strong style="color: #808080">Etiquetas</strong><br /><br />
+            </div>
+            @foreach (var item in ViewBag.Etiquetas)
+            {
+                <div class="container">
+                    <a href="/nota/lista?idEtiqueta=@item.Id&titulo=@item.Nombre"><span style="color: #ffffff">@item.Nombre</span></a>
+                </div>
+
+                <br />
+             }
+        </div>
+    </div>
+</div>
+
+
+<div class="row" id="Lista">
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="crear" tabindex="-1" aria-labelledby="crear" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear Nota</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="crearNotita">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="submitFormCreate()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script>
+        $.ajax({
+            url: '/Nota/Create',
+            type: 'get'
+        }).done(function (html) {
+            $('#crearNotita').html(html);
+        })
+
+        function submitFormCreate() {
+            $('#createNota').submit();
+        }
+
+        function guardar(event) {
+            event.preventDefault();
+            var dataString = new FormData($('#crear form')[0]);
+            $.ajax({
+                url: "/Nota/Create",
+                type: "post",
+                processData: false,  // Important!
+                contentType: false,
+                cache: false,
+                data: dataString
+            }).done(function (html) {
+                location.reload();
+            }).fail(function (html) {
+                $('#crearNotita').html(html.responseText);
+            });
+        }
+    </script>
+
+    <script>
+        function init() {
+            $.ajax({
+                url: '/Nota/_Index?search=' + $('#Nombre').val()
+            }).done(function (notas) {
+                $('#Lista').html(notas);
+            });
+        }
+
+        $('#buscar').click(function (e) {
+            e.preventDefault();
+            init();
+        });
+        init();
+    </script>
+}

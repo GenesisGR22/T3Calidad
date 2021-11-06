@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="card" style=" background: #000000">
+    <h3 class="card-header text-center" style="color: #ffffff">Lista de la Etiqueta: @ViewBag.Titulo</h3>
+    <div class="card-body" style=" background: #000000">
+        <br />
+        @foreach (var item in ViewBag.DetalleEtiquetaNota)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body my-3">
+
+                            <h6 align="center">@item.Notas.Titulo</h6> <hr />
+                            <span>@item.Notas.Contenido </span><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+        }
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿
+
+<div class="card">
+    <h3 class="card-header text-center">@ViewBag.nota.Titulo</h3>
+    <div class="card-body">
+        <span><strong>Contenido: </strong></span>
+        <br />
+        <br />
+        <span>
+            @ViewBag.nota.Contenido
+        </span>
+        <br />
+        <br />
+        <p class="card-text">
+            <span><strong>Fecha de última modificacion: </strong>@string.Format("{0:dd MMMM yyyy hh:mm tt}", @ViewBag.nota.Fecha)</span>
+            <br />
+            <br />
+            <span><strong>Etiquetas: </strong></span>
+            <ul>
+                @foreach (var etiqueta in ViewBag.Etiquetas)
+                {
+                    if (etiqueta.IdNota == @ViewBag.nota.Id)
+                    {
+        <li>
+            <span>
+                @etiqueta.Etiquetas.Nombre
+            </span>
+        </li>
+}
+}
+            </ul>
+            <hr />
+                <form action="/Nota/Compartir?idNota=@ViewBag.idNota&idUsuario=@ViewBag.idUsuario" method="post">
+                    <div class="col-md-5 mx-4">
+                        Amigos
+                        <select name="idAmigo">
+                            <option value="idAmigo">-- Selecciona una opción --</option>
+                            @foreach (var item in ViewBag.usuarios)
+                            {
+                                <option value="@item.Id">@item.Nombre</option>}
+                        </select>
+                        <button class="btn btn-success">Compartir Nota</button>
+
+                    </div>
+                </form>
+            <br />
+</div>
+</div>
